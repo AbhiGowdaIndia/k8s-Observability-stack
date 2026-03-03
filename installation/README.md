@@ -77,4 +77,8 @@ helm install kibana elastic/kibana \
 ```bash
 kubectl apply -f infrastructure/opentelemetry/
 ```
+## 7. Deploy Application
 
+```bash
+kubectl apply -f app/
+```
