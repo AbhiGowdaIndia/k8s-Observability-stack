@@ -11,13 +11,30 @@
 
 ## 1. Create Namespace
 
+```bash
 kubectl apply -f infrastructure/namespace.yaml
+```
 
 ## 2. Install Prometheus
 
+```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+```
 
+```bash
 helm install prometheus prometheus-community/kube-prometheus-stack \
   -n observability \
   -f infrastructure/prometheus/custom-kube-prometheus-stack.yaml
+  ```
+
+## 3. Install Grafana
+
+```bash
+helm repo add grafana https://grafana.github.io/helm-charts
+```
+```bash
+helm install grafana grafana/grafana \
+  -n observability \
+  -f infrastructure/grafana/values.yaml
+  ```
 
