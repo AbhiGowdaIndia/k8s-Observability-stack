@@ -16,7 +16,7 @@ We will create:
 
 Cluster will be created in:
 
-Region: ap-south-1 (Mumbai)
+Region: ap-south-1
 
 ---
 
@@ -34,19 +34,6 @@ Verify installations:
 aws --version  
 eksctl version  
 kubectl version --client  
-
----
-
-## 🔐 Required IAM Permissions
-
-Your IAM user or role must have permissions to:
-
-- Create EKS clusters
-- Create EC2 instances
-- Create IAM roles
-- Create VPC resources
-
-Recommended: Attach AdministratorAccess (for learning/demo purpose only)
 
 ---
 
@@ -71,7 +58,7 @@ eksctl utils associate-iam-oidc-provider \
   --cluster=observability-cluster \
   --approve
 ```
-* Creates an OOIDC identity provider in AWS IAM and links it to our EKS cluster in ap-south-a region.
+* Creates an OIDC identity provider in AWS IAM and links it to our EKS cluster in ap-south-a region.
 
 ## step 3: Create node group to our cluster
 
@@ -96,10 +83,16 @@ eksctl create nodegroup \
 * It provisions EC2 instances of type t3.medium with a minimum of 2 nodes and allows scaling up to 3 nodes using an Auto Scaling Group, each node having a 20 GB EBS volume for storage.
 * The --managed flag ensures AWS manages lifecycle tasks like upgrades and patching.
 
-## step 3: updates our local kubeconfig file
+## step 4: updates our local kubeconfig file
 
 ```bash
 aws eks update-kubeconfig --name observability-cluster
 ```
 * Updates our local kubeconfig file (usually located at ~/.kube/config) so that kubectl can connect to your Amazon EKS cluster named "observability-cluster".
 * In simple terms, this command tells our local Kubernetes CLI how to authenticate and communicate with your EKS cluster in AWS.
+
+## step 4: Verify Cluster
+
+```bash
+kubectl get nodes
+```
