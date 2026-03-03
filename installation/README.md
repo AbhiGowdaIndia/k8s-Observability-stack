@@ -38,3 +38,22 @@ helm install grafana grafana/grafana \
   -f infrastructure/grafana/values.yaml
   ```
 
+## 4. Install Jaeger
+
+```bash
+helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
+```
+
+```bash
+helm install jaeger jaegertracing/jaeger \
+  -n observability \
+  -f infrastructure/jaeger/values.yaml
+  ```
+
+## 5. Deploy EFK
+
+```bash
+helm repo add elastic https://helm.elastic.co
+```
+
+```bash
