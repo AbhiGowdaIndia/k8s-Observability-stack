@@ -9,64 +9,52 @@
 
 ---
 
-## Step 1: Create Namespace
+## 1. Create Namespace
 
 kubectl apply -f infrastructure/namespace.yaml
 
----
-
-## Step 2: Install Prometheus
+## 2. Install Prometheus
 
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
 helm install prometheus prometheus-community/kube-prometheus-stack \
   -n observability \
-  -f infrastructure/prometheus/values.yaml
+  -f infrastructure/prometheus/custom-kube-prometheus-stack.yaml
 
----
-
-## Step 3: Install Grafana
+## 3. Install Grafana
 
 helm repo add grafana https://grafana.github.io/helm-charts
+
 helm install grafana grafana/grafana \
   -n observability \
   -f infrastructure/grafana/values.yaml
 
----
-
-## Step 4: Install Jaeger
+## 4. Install Jaeger
 
 helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
+
 helm install jaeger jaegertracing/jaeger \
   -n observability \
   -f infrastructure/jaeger/values.yaml
 
----
+## 5. Deploy EFK
 
-## Step 5: Install EFK Stack
+helm repo add elastic https://helm.elastic.co
 
-Install Elasticsearch:
 helm install elasticsearch elastic/elasticsearch \
   -n observability \
   -f infrastructure/efk/elasticsearch-values.yaml
 
-Deploy Fluentd:
 kubectl apply -f infrastructure/efk/fluentd-daemonset.yaml
 
-Install Kibana:
 helm install kibana elastic/kibana \
   -n observability \
   -f infrastructure/efk/kibana-values.yaml
 
----
+## 6. Deploy OpenTelemetry
 
-## Step 6: Install OpenTelemetry Collector
+kubectl apply -f infrastructure/opentelemetry/
 
-kubectl apply -f infrastructure/opentelemetry/otel-collector-config.yaml
-kubectl apply -f infrastructure/opentelemetry/otel-collector-deployment.yaml
+## 7. Deploy Application
 
----
-
-## Step 7: Deploy Sample Application
-
-kubectl apply -f app/deployment.yaml
-kubectl apply -f app/service.yaml
+kubectl apply -f app/

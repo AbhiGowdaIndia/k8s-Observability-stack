@@ -55,7 +55,7 @@ k8s-observability-demo/
 │   ├── namespace.yaml  
 │   │  
 │   ├── prometheus/  
-│   │   ├── values.yaml  
+│   │   ├── custom-kube-prometheus-stack.yaml  
 │   │   └── kustomization.yaml  
 │   │  
 │   ├── grafana/  
