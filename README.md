@@ -45,8 +45,11 @@ k8s-observability-demo/
 ├── README.md  
 ├── architecture-diagram.png  
 │  
-├── docs/  
-│   └── installation-guide.md  
+├── eks-cluster-setup/  
+│   └── README.md  
+│
+├── installation/  
+│   └── README.md  
 │  
 ├── infrastructure/  
 │   ├── namespace.yaml  
@@ -90,7 +93,7 @@ k8s-observability-demo/
 
 Refer to:
 
-docs/installation-guide.md
+installation/README.md
 
 ---
 
