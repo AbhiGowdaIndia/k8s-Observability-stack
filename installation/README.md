@@ -57,3 +57,18 @@ helm repo add elastic https://helm.elastic.co
 ```
 
 ```bash
+helm install elasticsearch elastic/elasticsearch \
+  -n observability \
+  -f infrastructure/efk/elasticsearch-values.yaml
+```
+
+```bash
+kubectl apply -f infrastructure/efk/fluentd-daemonset.yaml
+```
+
+```bash
+helm install kibana elastic/kibana \
+  -n observability \
+  -f infrastructure/efk/kibana-values.yaml
+```
+
