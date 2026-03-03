@@ -72,3 +72,9 @@ helm install kibana elastic/kibana \
   -f infrastructure/efk/kibana-values.yaml
 ```
 
+## 6. Deploy OpenTelemetry
+
+```bash
+kubectl apply -f infrastructure/opentelemetry/
+```
+
