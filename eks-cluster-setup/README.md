@@ -96,3 +96,59 @@ aws eks update-kubeconfig --name observability-cluster
 ```bash
 kubectl get nodes
 ```
+
+# Install AWS Load Balancer Controller
+
+## step 1: Associate IAM OIDC provider (we already did in step2 of cluster setup)
+
+## step 2: Create IAM policy
+
+* Download IAM policy JSON from AWS documentation and create policy:
+
+```bash
+aws iam create-policy
+--policy-name AWSLoadBalancerControllerIAMPolicy
+--policy-document file://iam-policy.json
+```
+## step 3: Create a IAM Service account
+
+```bash
+eksctl create iamserviceaccount
+--cluster=observability-cluster
+--namespace=kube-system
+--name=aws-load-balancer-controller
+--attach-policy-arn=arn:aws:iam::<ACCOUNT_ID>:policy/AWSLoadBalancerControllerIAMPolicy
+--approve
+```
+* This binds:
+  * k8s service account
+  * AWS IAM role
+  * IAM Policy
+
+## step 4: Install AWS Load Balancer Controller using helm
+
+```bash
+helm repo add eks https://aws.github.io/eks-charts
+```
+* This will adds the official Amazon EKS Helm chart repository to your local Helm configuration and gives it the name eks
+
+```bash
+helm repo update
+```
+* Helm to fetch the latest chart index files from all the Helm repositories you previously added
+
+```bash
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller \ 
+-n kube-system \ 
+--set clusterName=observability-cluster \
+--set serviceAccount.create=false \
+--set serviceAccount.name=aws-load-balancer-controller
+```
+* This will installs the AWS Load Balancer Controller Helm chart from the eks Helm repository into your EKS cluster.
+
+## step 5: Verify controller is running
+
+```bash
+kubectl get pods -n kube-system | grep aws-load-balancer
+```
+* This is used to check whether the AWS Load Balancer Controller pods are running inside your cluster.
