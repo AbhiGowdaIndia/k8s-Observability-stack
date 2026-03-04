@@ -45,7 +45,7 @@ Create cluster using eksctl:
 eksctl create cluster \
 --name=observability-cluster \
 --region=ap-south-1 \
---zone=ap-south-1a,ap-south-1b \
+--zones=ap-south-1a,ap-south-1b \
 --without-nodegroup
 ```
 * Creates a EKS cluster with name observability-cluster in ap-south-1 region without node group.
@@ -72,10 +72,9 @@ eksctl create nodegroup \
   --nodes-max=3 \
   --node-volume-size=20 \
   --managed \
-  --asg access \
   --external-dns-access \
   --full-ecr-access \
-  --appmess-access \
+  --appmesh-access \
   --alb-ingress-access \
   --node-private-networking
 ```
@@ -106,18 +105,18 @@ kubectl get nodes
 * Download IAM policy JSON from AWS documentation and create policy:
 
 ```bash
-aws iam create-policy
---policy-name AWSLoadBalancerControllerIAMPolicy
---policy-document file://iam-policy.json
+aws iam create-policy \
+--policy-name AWSLoadBalancerControllerIAMPolicy \
+--policy-document file://iam-policy.json 
 ```
 ## step 3: Create a IAM Service account
 
 ```bash
-eksctl create iamserviceaccount
---cluster=observability-cluster
---namespace=kube-system
---name=aws-load-balancer-controller
---attach-policy-arn=arn:aws:iam::<ACCOUNT_ID>:policy/AWSLoadBalancerControllerIAMPolicy
+eksctl create iamserviceaccount \
+--cluster=observability-cluster \
+--namespace=kube-system \
+--name=aws-load-balancer-controller \
+--attach-policy-arn=arn:aws:iam::<ACCOUNT_ID>:policy/AWSLoadBalancerControllerIAMPolicy \
 --approve
 ```
 * This binds:
