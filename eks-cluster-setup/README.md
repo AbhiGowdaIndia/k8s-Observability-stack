@@ -137,8 +137,7 @@ helm repo update
 * Helm to fetch the latest chart index files from all the Helm repositories you previously added
 
 ```bash
-helm install aws-load-balancer-controller eks/aws-load-balancer-controller \ 
--n kube-system \ 
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system \
 --set clusterName=observability-cluster \
 --set serviceAccount.create=false \
 --set serviceAccount.name=aws-load-balancer-controller
