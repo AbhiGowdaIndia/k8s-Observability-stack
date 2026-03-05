@@ -122,6 +122,16 @@ installation/README.md
 
 # Screenshots
 
+<table>
+<tr>
+<td>
+<img src="images/prometheus-1.png" width="400">
+</td>
+<td>
+<img src="images/prometheus-2.png" width="400">
+</td>
+</tr>
+</table>
 ![Prometheus-1](images/prometheus-1.png) ![Prometheus-2](images/prometheus-2.png)
 
 ## 🔥 Future Enhancements
