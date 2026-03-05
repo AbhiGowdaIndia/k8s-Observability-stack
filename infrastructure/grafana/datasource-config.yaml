@@ -14,7 +14,7 @@ service:
     service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
 
 datasources:
-  datasources.yaml:
+  datasource.yaml:
     apiVersion: 1
     datasources:
       - name: Prometheus
