@@ -143,7 +143,26 @@ installation/README.md
 </td>
 </tr>
 </table>
-![Prometheus-1](images/prometheus-1.png) ![Prometheus-2](images/prometheus-2.png)
+
+## Grafana Screenshots
+
+<table>
+<tr><td>Kubernetes cluster monitoring</td></tr>
+<tr>
+<td>
+<img src="images/grafana-2.png" width="100%">
+</td>
+</tr>
+<tr><td>Kube state metrics</td><td>Node Exporter</td></tr>
+<tr>
+<td>
+<img src="images/garafana-1.png" width="100%">
+</td>
+<td>
+<img src="images/grafana-3.png" width="100%">
+</td>
+</tr>
+</table>
 
 ## 🔥 Future Enhancements
 
