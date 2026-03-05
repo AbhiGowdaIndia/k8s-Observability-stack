@@ -122,7 +122,7 @@ installation/README.md
 
 # Screenshots
 
-![Prometheus-1](images/prometheus-1.png)
+![Prometheus-1](images/prometheus-1.png) ![Prometheus-2](images/prometheus-2.png)
 
 ## 🔥 Future Enhancements
 
