@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: demo-service
   namespace: observability
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb  # optional: choose NLB or classic
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
 spec:
   selector:
     app: demo
