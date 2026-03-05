@@ -122,13 +122,24 @@ installation/README.md
 
 # Screenshots
 
+## Prometheus Screenshots
 <table>
+<tr><td>CPU usage percentage per node</td><td>used memory (RAM) of a node in MB</td></tr>
 <tr>
 <td>
-<img src="images/prometheus-1.png" width="400">
+<img src="images/prometheus-1.png" width="100%">
 </td>
 <td>
-<img src="images/prometheus-2.png" width="400">
+<img src="images/prometheus-2.png" width="100%">
+</td>
+</tr>
+<tr><td>used disk space of the root filesystem (/) in GB</td><td>incoming network traffic rate (bytes received per second) on a node</td></tr>
+<tr>
+<td>
+<img src="images/prometheus-3.png" width="100%">
+</td>
+<td>
+<img src="images/prometheus-4.png" width="100%">
 </td>
 </tr>
 </table>
