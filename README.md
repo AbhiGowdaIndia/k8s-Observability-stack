@@ -120,6 +120,10 @@ installation/README.md
 
 ---
 
+# Screenshots
+
+![Prometheus-1](images/prometheus-1.png)
+
 ## 🔥 Future Enhancements
 
 - SLI / SLO implementation
