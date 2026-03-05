@@ -1,4 +1,4 @@
-lertmanager:
+alertmanager:
   alertmanagerSpec:
     # Selects Alertmanager configuration based on these labels. Ensure that the Alertmanager configuration has matching labels.
     # Solves error: Misconfigured Alertmanager selectors can lead to missing alert configurations.
